@@ -15,6 +15,9 @@ function Navbar() {
       <Link to="/" className={linkClass('/')}>
         SOS
       </Link>
+      <Link to="/share" className={linkClass('/share')}>
+  Share
+</Link>
       <Link to="/contacts" className={linkClass('/contacts')}>
         Contacts
       </Link>
