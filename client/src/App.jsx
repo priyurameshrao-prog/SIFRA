@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import Contacts from './components/Contacts';
 import History from './components/History';
 import ShareLocation from './components/ShareLocation';
+import Track from './components/Track';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/history" element={<History />} />
         <Route path="/share" element={<ShareLocation />} />
+        <Route path="/track/:shareId" element={<Track />} />
       </Routes>
     </>
   );

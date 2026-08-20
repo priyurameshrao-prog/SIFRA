@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const http = require('http');
 const { Server } = require('socket.io');
+const LocationShare = require('./models/LocationShare');
 require('dotenv').config();
 
 const contactRoutes = require('./routes/contacts');
@@ -33,9 +34,18 @@ io.on('connection', (socket) => {
     socket.join(shareId);
   });
 
-  socket.on('send-location', ({ shareId, lat, lng }) => {
-    io.to(shareId).emit('location-update', { lat, lng });
-  });
+  socket.on('send-location', async ({ shareId, lat, lng }) => {
+  io.to(shareId).emit('location-update', { lat, lng });
+
+  try {
+    await LocationShare.findOneAndUpdate(
+      { shareId },
+      { currentLocation: { lat, lng } }
+    );
+  } catch (err) {
+    console.error('Failed to save location', err);
+  }
+});
 
   socket.on('disconnect', () => {
     console.log('Socket disconnected:', socket.id);
