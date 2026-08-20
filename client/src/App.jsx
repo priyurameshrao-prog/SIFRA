@@ -1,11 +1,7 @@
+import Dashboard from './components/Dashboard';
+
 function App() {
-  return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-white">
-        Women Safety App 🚨
-      </h1>
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default App;
