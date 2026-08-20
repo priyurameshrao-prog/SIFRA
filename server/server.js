@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const contactRoutes = require('./routes/contacts');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -10,6 +12,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Women Safety App backend is running ✅');
 });
+
+app.use('/api/contacts', contactRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected ✅'))
