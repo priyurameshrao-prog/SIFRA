@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const contactRoutes = require('./routes/contacts');
+const alertRoutes = require('./routes/alerts');
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/contacts', contactRoutes);
+app.use('/api/alerts', alertRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected ✅'))
