@@ -1,7 +1,7 @@
-import Dashboard from './components/Dashboard';
+import Contacts from './components/Contacts';
 
 function App() {
-  return <Dashboard />;
+  return <Contacts />;
 }
 
 export default App;
